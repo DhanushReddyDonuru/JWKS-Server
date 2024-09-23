@@ -1,0 +1,13 @@
+import requests
+
+# Test JWKS endpoint
+jwks_response = requests.get('http://127.0.0.1:8080/.well-known/jwks.json')
+print("JWKS Response:", jwks_response.json())
+
+# Test Auth endpoint
+auth_response = requests.post('http://127.0.0.1:8080/auth')
+print("Auth Response:", auth_response.json())
+
+# Test Auth endpoint with expired token
+expired_auth_response = requests.post('http://127.0.0.1:8080/auth?expired=true')
+print("Expired Auth Response:", expired_auth_response.json())
